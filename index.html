@@ -30,10 +30,12 @@
       width: 200px;
       text-align: center;
       cursor: pointer;
-      transition: 0.3s;
+      transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
     }
     .youtuber-card:hover {
       background-color: #333;
+      transform: scale(1.1); /* Zvětšení při hover */
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); /* Přidání stínu */
     }
     .modal {
       display: none;
@@ -43,9 +45,10 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.7);
+      background: rgba(0, 0, 0, 0.7);
       justify-content: center;
       align-items: center;
+      animation: fadeIn 0.5s ease; /* Animace při zobrazení */
     }
     .modal-content {
       background-color: #1f1f1f;
@@ -53,14 +56,41 @@
       border-radius: 10px;
       max-width: 600px;
       color: white;
+      transform: translateY(-50px);
+      animation: slideDown 0.5s ease forwards; /* Posunutí modalu dolů při zobrazení */
     }
     .close-btn {
       float: right;
       cursor: pointer;
       color: red;
+      transition: transform 0.2s ease;
+    }
+    .close-btn:hover {
+      transform: scale(1.2); /* Zvětšení při hover */
     }
     a {
       color: #66ccff;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #33aaff;
+    }
+    /* Klíčové snímky pro animace */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    @keyframes slideDown {
+      from {
+        transform: translateY(-50px);
+      }
+      to {
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
