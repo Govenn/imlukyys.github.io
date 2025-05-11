@@ -9,15 +9,15 @@
     body {
       margin: 0;
       font-family: 'Arial', sans-serif;
-      background-color: #121212; /* Tmavé pozadí */
+      background-color: #121212;
       color: white;
       overflow-x: hidden;
     }
 
     /* Hlavní navigace */
     header {
-      background: rgba(0, 0, 0, 0.7); /* Poloprůhledné pozadí */
-      backdrop-filter: blur(10px); /* Rozmazané pozadí */
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
       color: white;
       position: sticky;
       top: 0;
@@ -26,17 +26,18 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
 
     header .logo {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       font-weight: bold;
+      color: #6a11cb;
     }
 
     header nav {
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
     }
 
     header nav a {
@@ -45,16 +46,18 @@
       font-weight: bold;
       padding: 0.5rem 1rem;
       border-radius: 5px;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     header nav a:hover {
       background-color: rgba(255, 255, 255, 0.1);
+      color: #6a11cb;
     }
 
     /* Hero sekce */
     .hero {
       height: 100vh;
+      background: linear-gradient(135deg, #1e1e1e, #2c2c2c);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -65,21 +68,34 @@
     }
 
     .hero .card {
-      background: rgba(0, 0, 0, 0.8); /* Poloprůhledné zaoblené pozadí */
+      background: rgba(0, 0, 0, 0.8);
       backdrop-filter: blur(15px);
       border-radius: 15px;
       padding: 2rem;
       width: 90%;
-      max-width: 600px;
+      max-width: 800px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      border: 2px solid rgba(138, 43, 226, 0.8);
+      border: 2px solid rgba(106, 17, 203, 0.8);
       text-align: center;
     }
 
     .hero h1 {
-      font-size: 2.5rem;
+      font-size: 3rem;
       margin-bottom: 1rem;
       color: #ffffff;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 3s infinite linear;
+    }
+
+    @keyframes shine {
+      0% {
+        background-position: 0%;
+      }
+      100% {
+        background-position: 200%;
+      }
     }
 
     .hero p {
@@ -94,7 +110,7 @@
       border-radius: 50px;
       background: linear-gradient(135deg, #6a11cb, #2575fc);
       color: white;
-      font-size: 1rem;
+      font-size: 1.2rem;
       font-weight: bold;
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -105,14 +121,39 @@
       box-shadow: 0 10px 30px rgba(106, 17, 203, 0.5);
     }
 
-    /* Sekce s kartami */
+    /* Sekce */
+    .section {
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #ffffff;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    .section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+    }
+
     .container {
       max-width: 1200px;
-      margin: 5rem auto;
-      padding: 0 2rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
       gap: 2rem;
+      justify-content: center;
     }
 
     .info-card {
@@ -120,7 +161,8 @@
       backdrop-filter: blur(15px);
       border: 2px solid rgba(138, 43, 226, 0.8);
       border-radius: 15px;
-      padding: 1.5rem;
+      padding: 2rem;
+      width: 300px;
       text-align: center;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
@@ -148,48 +190,47 @@
       color: #cccccc;
     }
 
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      justify-content: center;
-      align-items: center;
-      z-index: 2000;
-    }
-
-    .modal-content {
-      background: rgba(0, 0, 0, 0.9);
-      backdrop-filter: blur(20px);
-      padding: 2rem;
-      border-radius: 20px;
-      max-width: 500px;
-      width: 90%;
-      text-align: center;
-      color: white;
+    /* Kontakt sekce */
+    .contact-form {
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(15px);
       border: 2px solid rgba(138, 43, 226, 0.8);
+      border-radius: 15px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 600px;
+      margin: 2rem auto;
     }
 
-    .modal-content h2 {
-      margin-bottom: 1rem;
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      border-radius: 5px;
+      border: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 1rem;
     }
 
-    .modal-content a {
-      color: #66ccff;
-      text-decoration: none;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: 1.5rem;
+    .contact-form button {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
       cursor: pointer;
-      color: red;
+      width: 100%;
+      margin-top: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(106, 17, 203, 0.5);
     }
   </style>
 </head>
@@ -198,8 +239,8 @@
 <header>
   <div class="logo">Govenn</div>
   <nav>
-    <a href="#youtubers">YouTubeři</a>
     <a href="#about">O mně</a>
+    <a href="#portfolio">Portfolio</a>
     <a href="#contact">Kontakt</a>
   </nav>
 </header>
@@ -208,49 +249,53 @@
   <div class="card">
     <h1>Vítejte na mém portfoliu</h1>
     <p>Jsem video editor, který spolupracuje s různými YouTubery. Níže najdete ukázky mé práce.</p>
-    <button onclick="scrollToSection('youtubers')">Prozkoumat více</button>
+    <button onclick="scrollToSection('portfolio')">Prozkoumat více</button>
   </div>
 </section>
 
-<section id="youtubers" class="container">
-  <div class="info-card" onclick="openModal('Ment')">
-    <img src="https://via.placeholder.com/100" alt="Ment">
-    <h3>Ment</h3>
-    <p>Video editor pro kanál Ment.</p>
-  </div>
-  <div class="info-card" onclick="openModal('Kovy')">
-    <img src="https://via.placeholder.com/100" alt="Kovy">
-    <h3>Kovy</h3>
-    <p>Video editor pro kanál Kovy.</p>
+<section id="about" class="section">
+  <h2>O mně</h2>
+  <div class="container">
+    <div class="info-card">
+      <img src="https://via.placeholder.com/100" alt="Profil">
+      <h3>Jméno</h3>
+      <p>Jsem profesionální video editor s několikaletou praxí.</p>
+    </div>
+    <div class="info-card">
+      <img src="https://via.placeholder.com/100" alt="Editor">
+      <h3>Software</h3>
+      <p>Pracuji s Adobe Premiere Pro a After Effects.</p>
+    </div>
   </div>
 </section>
 
-<div id="modal" class="modal" onclick="closeModal(event)">
-  <div class="modal-content">
-    <span class="close-btn" onclick="closeModal(event)">✖</span>
-    <h2 id="modal-title">Ment</h2>
-    <p><a href="https://youtube.com/@ment" target="_blank">Otevřít kanál </a></p>
-    <ul>
-      <li><a href="https://youtu.be/xxxx1" target="_blank">Test video 1</a></li>
-      <li><a href="https://youtu.be/xxxx2" target="_blank">Test video 2</a></li>
-    </ul>
+<section id="portfolio" class="section">
+  <h2>Portfolio</h2>
+  <div class="container">
+    <div class="info-card">
+      <img src="https://via.placeholder.com/100" alt="Ment">
+      <h3>Ment</h3>
+      <p>Video editor pro kanál Ment.</p>
+    </div>
+    <div class="info-card">
+      <img src="https://via.placeholder.com/100" alt="Kovy">
+      <h3>Kovy</h3>
+      <p>Video editor pro kanál Kovy.</p>
+    </div>
   </div>
-</div>
+</section>
+
+<section id="contact" class="section">
+  <h2>Kontakt</h2>
+  <div class="contact-form">
+    <input type="text" placeholder="Vaše jméno" />
+    <input type="email" placeholder="Váš email" />
+    <textarea rows="5" placeholder="Vaše zpráva"></textarea>
+    <button>Odeslat</button>
+  </div>
+</section>
 
 <script>
-  function openModal(name) {
-    const modal = document.getElementById("modal");
-    modal.style.display = "flex";
-    document.getElementById("modal-title").textContent = name;
-  }
-
-  function closeModal(event) {
-    if (event.target.id === "modal" || event.target.className === "close-btn") {
-      const modal = document.getElementById("modal");
-      modal.style.display = "none";
-    }
-  }
-
   function scrollToSection(id) {
     document.getElementById(id).scrollIntoView({ behavior: "smooth" });
   }
