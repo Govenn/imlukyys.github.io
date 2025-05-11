@@ -86,74 +86,178 @@
       object-fit: cover;
     }
 
-    /* Kontakt sekce */
-    .contact-section {
+    /* Hero sekce */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(135deg, #1e1e1e, #2c2c2c);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
       padding: 2rem;
-    }
-
-    .contact-section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      color: #ffffff;
-    }
-
-    .contact-form {
-      max-width: 600px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background: rgba(0, 0, 0, 0.8);
-      border-radius: 10px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 1rem;
-      margin: 0.5rem 0;
-      border: none;
-      border-radius: 5px;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      font-size: 1rem;
-    }
-
-    .contact-form button {
-      width: 100%;
-      padding: 1rem;
-      background: #6a11cb;
-      color: white;
-      font-size: 1.2rem;
-      font-weight: bold;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.2s;
-    }
-
-    .contact-form button:hover {
-      background: #2575fc;
-      transform: scale(1.05);
-    }
-
-    .success-message {
-      margin-top: 1rem;
-      padding: 1rem;
-      border-radius: 5px;
-      background: #28a745;
-      color: white;
-      font-weight: bold;
-      display: none;
       position: relative;
     }
 
-    .success-message .close {
-      position: absolute;
-      top: 5px;
-      right: 10px;
+    .hero .card {
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(15px);
+      border-radius: 15px;
+      padding: 2rem;
+      width: 90%;
+      max-width: 800px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border: 2px solid rgba(106, 17, 203, 0.8);
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 3s infinite linear;
+    }
+
+    @keyframes shine {
+      0% {
+        background-position: 0%;
+      }
+      100% {
+        background-position: 200%;
+      }
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: #cccccc;
+      margin-bottom: 2rem;
+    }
+
+    .hero button {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
       font-size: 1.2rem;
+      font-weight: bold;
       cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hero button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(106, 17, 203, 0.5);
+    }
+
+    /* Sekce */
+    .section {
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #ffffff;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    .section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .info-card {
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(15px);
+      border: 2px solid rgba(138, 43, 226, 0.8);
+      border-radius: 15px;
+      padding: 2rem;
+      width: 300px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(138, 43, 226, 0.8);
+    }
+
+    .info-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
+
+    .info-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .info-card p {
+      font-size: 1rem;
+      color: #cccccc;
+    }
+
+    /* Kontakt sekce */
+    .contact-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 2rem;
+    }
+
+    .contact-icons .social-button {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: black;
+      position: relative;
+      border: 3px solid transparent;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact-icons .social-button.discord {
+      border-color: #5865F2; /* Modrá barva pro Discord */
+    }
+
+    .contact-icons .social-button.instagram {
+      border-color: #E1306C; /* Růžová barva pro Instagram */
+    }
+
+    .contact-icons .social-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    }
+
+    .contact-icons .social-button img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   </style>
 </head>
@@ -174,61 +278,51 @@
   </nav>
 </header>
 
-<section id="contact" class="contact-section">
+<section class="hero">
+  <div class="card">
+    <h1>Vítejte na mém portfoliu</h1>
+    <p>Jsem video editor, který spolupracuje s různými YouTubery. Níže najdete ukázky mé práce.</p>
+    <button onclick="scrollToSection('portfolio')">Prozkoumat více</button>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <h2>O mně</h2>
+  <div class="container">
+    <div class="info-card">
+      <img src="https://via.placeholder.com/100" alt="Profil">
+      <h3>Jméno</h3>
+      <p>Profesionální editor...</p>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio" class="section">
+  <h2>Portfolio</h2>
+  <div class="container">
+    <div class="info-card">
+      <img src="https://via.placeholder.com/100" alt="Ment">
+      <h3>Ment</h3>
+      <p>Editor...</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section">
   <h2>Kontakt</h2>
-  <form class="contact-form" id="contactForm">
-    <input type="email" id="email" placeholder="Váš email" required />
-    <textarea id="message" rows="5" placeholder="Vaše zpráva" required></textarea>
-    <button type="submit">Odeslat</button>
-  </form>
-  <div class="success-message" id="successMessage">
-    Email byl úspěšně odeslán! Kontaktuju tě, až budu mít čas.
-    <span class="close" onclick="closeMessage()">×</span>
+  <div class="contact-icons">
+    <a class="social-button discord" href="https://discord.com/invite/tvuj-odkaz" target="_blank">
+      <img src="https://www.pngkey.com/png/full/20-200938_white-discord-logo-png-png-free-discord-logo.png" alt="Discord Logo">
+    </a>
+    <a class="social-button instagram" href="https://instagram.com/tvuj-odkaz" target="_blank">
+      <img src="https://img.icons8.com/win10/512/FFFFFF/instagram-new.png" alt="Instagram Logo">
+    </a>
   </div>
 </section>
 
 <script>
-  const contactForm = document.getElementById('contactForm');
-  const successMessage = document.getElementById('successMessage');
-
-  contactForm.addEventListener('submit', async function (e) {
-    e.preventDefault();
-
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-
-    // Zobrazení zprávy o úspěchu
-    successMessage.style.display = 'block';
-
-    // Skrýt zprávu automaticky po 5 sekundách
-    setTimeout(() => {
-      successMessage.style.display = 'none';
-    }, 5000);
-
-    // Odeslání emailu (pouze příklad, vyžaduje backend nebo EmailJS)
-    try {
-      await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          service_id: 'service_f36v93x',
-          template_id: 'template_2l459x8',
-          user_id: 'qQNhM8OvjV9ekzd1a',
-          template_params: {
-            user_email: email,
-            user_message: message,
-          },
-        }),
-      });
-    } catch (error) {
-      console.error('Chyba při odesílání emailu:', error);
-    }
-  });
-
-  function closeMessage() {
-    successMessage.style.display = 'none';
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
   }
 </script>
 
