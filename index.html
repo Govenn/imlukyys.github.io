@@ -86,23 +86,140 @@
       object-fit: cover;
     }
 
-    /* Shiny efekt */
-    header nav .social-button::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 10%, transparent 70%);
-      transform: rotate(45deg);
-      opacity: 0;
-      transition: opacity 0.3s, transform 0.3s;
+    /* Hero sekce */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(135deg, #1e1e1e, #2c2c2c);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
     }
 
-    header nav .social-button:hover::before {
-      opacity: 1;
-      transform: rotate(90deg);
+    .hero .card {
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(15px);
+      border-radius: 15px;
+      padding: 2rem;
+      width: 90%;
+      max-width: 800px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border: 2px solid rgba(106, 17, 203, 0.8);
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 3s infinite linear;
+    }
+
+    @keyframes shine {
+      0% {
+        background-position: 0%;
+      }
+      100% {
+        background-position: 200%;
+      }
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: #cccccc;
+      margin-bottom: 2rem;
+    }
+
+    .hero button {
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hero button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(106, 17, 203, 0.5);
+    }
+
+    /* Sekce */
+    .section {
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #ffffff;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    .section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .info-card {
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(15px);
+      border: 2px solid rgba(138, 43, 226, 0.8);
+      border-radius: 15px;
+      padding: 2rem;
+      width: 300px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(138, 43, 226, 0.8);
+    }
+
+    .info-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
+
+    .info-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .info-card p {
+      font-size: 1rem;
+      color: #cccccc;
     }
 
     /* Kontakt sekce */
@@ -142,25 +259,6 @@
       height: 100%;
       object-fit: cover;
     }
-
-    /* Shiny efekt pro kontakt */
-    .contact-icons .social-button::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 10%, transparent 70%);
-      transform: rotate(45deg);
-      opacity: 0;
-      transition: opacity 0.3s, transform 0.3s;
-    }
-
-    .contact-icons .social-button:hover::before {
-      opacity: 1;
-      transform: rotate(90deg);
-    }
   </style>
 </head>
 <body>
@@ -171,25 +269,51 @@
     <a href="#about">O mně</a>
     <a href="#portfolio">Portfolio</a>
     <a href="#contact">Kontakt</a>
-    <!-- Discord -->
     <a class="social-button discord" href="https://discord.com/invite/tvuj-odkaz" target="_blank">
       <img src="https://www.pngkey.com/png/full/20-200938_white-discord-logo-png-png-free-discord-logo.png" alt="Discord Logo">
     </a>
-    <!-- Instagram -->
     <a class="social-button instagram" href="https://instagram.com/tvuj-odkaz" target="_blank">
       <img src="https://img.icons8.com/win10/512/FFFFFF/instagram-new.png" alt="Instagram Logo">
     </a>
   </nav>
 </header>
 
+<section class="hero">
+  <div class="card">
+    <h1>Vítejte na mém portfoliu</h1>
+    <p>Jsem video editor, který spolupracuje s různými YouTubery. Níže najdete ukázky mé práce.</p>
+    <button onclick="scrollToSection('portfolio')">Prozkoumat více</button>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <h2>O mně</h2>
+  <div class="container">
+    <div class="info-card">
+      <img src="https://via.placeholder.com/100" alt="Profil">
+      <h3>Jméno</h3>
+      <p>Profesionální editor...</p>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio" class="section">
+  <h2>Portfolio</h2>
+  <div class="container">
+    <div class="info-card">
+      <img src="https://via.placeholder.com/100" alt="Ment">
+      <h3>Ment</h3>
+      <p>Editor...</p>
+    </div>
+  </div>
+</section>
+
 <section id="contact" class="section">
   <h2>Kontakt</h2>
   <div class="contact-icons">
-    <!-- Discord -->
     <a class="social-button discord" href="https://discord.com/invite/tvuj-odkaz" target="_blank">
       <img src="https://www.pngkey.com/png/full/20-200938_white-discord-logo-png-png-free-discord-logo.png" alt="Discord Logo">
     </a>
-    <!-- Instagram -->
     <a class="social-button instagram" href="https://instagram.com/tvuj-odkaz" target="_blank">
       <img src="https://img.icons8.com/win10/512/FFFFFF/instagram-new.png" alt="Instagram Logo">
     </a>
