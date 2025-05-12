@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: 'Arial', sans-serif;
-      background-color: #0d0d0d; /* Tmavé pozadí */
+      background-color: #0d0d0d;
       color: white;
       overflow-x: hidden;
     }
@@ -133,6 +133,26 @@
       box-shadow: 0 15px 30px rgba(255, 255, 255, 0.3);
     }
 
+    /* Zvýraznění vybrané karty */
+    .portfolio .portfolio-card.active {
+      transform: scale(1.1); /* Zvětšení */
+      outline-width: 6px; /* Zvýraznění rámu */
+      transition: transform 0.3s ease, outline-width 0.3s ease;
+    }
+
+    /* Specifické barvy outline */
+    .portfolio .portfolio-card.hejlovec.active {
+      outline-color: red;
+    }
+
+    .portfolio .portfolio-card.irl-hejlovec.active {
+      outline-color: pink;
+    }
+
+    .portfolio .portfolio-card.hejl.active {
+      outline-color: cyan;
+    }
+
     .portfolio .portfolio-card img {
       width: 100px;
       height: 100px;
@@ -157,66 +177,6 @@
       color: #cccccc;
       font-size: 0.9rem;
     }
-
-    .portfolio .details {
-      display: none;
-      position: relative; /* Pod projektem */
-      margin-top: 1rem;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 1rem;
-      border-radius: 15px;
-      opacity: 0; /* Skryté na začátku */
-      animation: none; /* Animace pro přechod */
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeOut {
-      from {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      to {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-    }
-
-    .portfolio .details.visible {
-      display: block;
-      opacity: 1;
-      animation: fadeIn 0.3s ease forwards;
-    }
-
-    .portfolio .details.hidden {
-      animation: fadeOut 0.3s ease forwards;
-    }
-
-    .portfolio .details button {
-      background: linear-gradient(45deg, #6a11cb, #2575fc);
-      border: none;
-      padding: 0.5rem 1rem;
-      margin: 0.5rem;
-      border-radius: 10px;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .portfolio .details button:hover {
-      transform: scale(1.1);
-      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
-    }
   </style>
 </head>
 <body>
@@ -238,56 +198,30 @@
   <section id="portfolio">
     <div class="portfolio">
       <div class="portfolio-title">Portfolio</div>
-      <div class="portfolio-card hejlovec" onclick="toggleDetails(this)">
+      <div class="portfolio-card hejlovec" onclick="toggleActive(this)">
         <h3>Hejlovec</h3>
         <img src="https://yt3.googleusercontent.com/mT84AwrYu0YGGVMvozrmqg1d9DDOJxXwm26TRaecObw-qEFff4HbRfcbOohGFJrg0xpWsVHoKg=s900-c-k-c0x00ffffff-no-rj" alt="Hejlovec">
         <p>396 tis. odběratelů</p>
-        <div class="details">
-          <button>Videa</button>
-          <button>Kanál</button>
-        </div>
       </div>
-      <div class="portfolio-card irl-hejlovec" onclick="toggleDetails(this)">
+      <div class="portfolio-card irl-hejlovec" onclick="toggleActive(this)">
         <h3>IRL Hejlovec</h3>
         <img src="https://yt3.googleusercontent.com/FFsgDhzJs_NHW0I7v8OLhnV-463U4m8gNhRXAPXwq4TMaFAINjvDy-vLC3qcxqyvViyOBea8BQ=s900-c-k-c0x00ffffff-no-rj" alt="IRL Hejlovec">
         <p>Popis projektu...</p>
-        <div class="details">
-          <button>Videa</button>
-          <button>Kanál</button>
-        </div>
       </div>
-      <div class="portfolio-card hejl" onclick="toggleDetails(this)">
+      <div class="portfolio-card hejl" onclick="toggleActive(this)">
         <h3>HEJL</h3>
         <img src="https://yt3.googleusercontent.com/q25h0R_DstVHCvhD4_C1d-vSRZlGV5VzRhyE6HsRKJLX5ecFbMdC-s8vFnGg7PaD9Itml_d3=s900-c-k-c0x00ffffff-no-rj" alt="HEJL">
         <p>Popis projektu...</p>
-        <div class="details">
-          <button>Videa</button>
-          <button>Kanál</button>
-        </div>
       </div>
     </div>
   </section>
 
   <script>
-    function toggleDetails(card) {
-      const details = card.querySelector('.details');
-      const allDetails = document.querySelectorAll('.portfolio .details');
-
-      allDetails.forEach(detail => {
-        if (detail !== details) {
-          detail.classList.remove('visible');
-          detail.classList.add('hidden');
-          setTimeout(() => detail.classList.remove('hidden'), 300); // Po skrytí odstraníme třídu
-        }
-      });
-
-      if (!details.classList.contains('visible')) {
-        details.classList.add('visible');
-      } else {
-        details.classList.remove('visible');
-        details.classList.add('hidden');
-        setTimeout(() => details.classList.remove('hidden'), 300); // Po skrytí odstraníme třídu
-      }
+    function toggleActive(card) {
+      // Zrušit zvýraznění na všech kartách
+      document.querySelectorAll('.portfolio-card').forEach(c => c.classList.remove('active'));
+      // Zvýraznit pouze kliknutou kartu
+      card.classList.add('active');
     }
   </script>
 </body>
