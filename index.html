@@ -79,6 +79,44 @@
       color: #6a11cb;
     }
 
+    /* Sekce "O mně" */
+    #about {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    #about .about-content {
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      flex: 1 1 45%;
+    }
+
+    #about .about-content img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+    }
+
+    #about .about-content h2 {
+      color: #ffffff;
+      margin-bottom: 1rem;
+    }
+
+    #about .about-content p {
+      color: #cccccc;
+    }
+
     /* Sekce "Portfolio" */
     .portfolio {
       display: grid;
@@ -130,9 +168,16 @@
   <nav>
     <a href="#about">O mně</a>
     <a href="#portfolio">Portfolio</a>
-    <a href="#contact">Kontakt</a>
   </nav>
 </header>
+
+<section id="about" class="fade-in">
+  <div class="about-content">
+    <img src="https://media.discordapp.net/attachments/1258383573958918224/1371217051045204040/image.png?format=webp&quality=lossless" alt="Editor">
+    <h2>O mně</h2>
+    <p>Jsem profesionální video editor, který spolupracuje s různými YouTubery.</p>
+  </div>
+</section>
 
 <section id="portfolio" class="portfolio fade-in">
   <div class="portfolio-card">
