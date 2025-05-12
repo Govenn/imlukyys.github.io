@@ -158,21 +158,15 @@
       border-radius: 20px;
       padding: 1.5rem;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, outline 0.3s ease;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      outline: 2px solid transparent;
+      position: relative;
     }
 
     .portfolio .portfolio-card:hover {
       transform: scale(1.05);
       box-shadow: 0 15px 30px rgba(255, 255, 255, 0.3);
-      outline: 2px solid #6a11cb; /* Default outline */
-    }
-
-    /* Speciální efekt pro hejlovec */
-    .portfolio .portfolio-card.hejlovec:hover {
-      outline: 2px solid red; /* Červená outline */
     }
 
     .portfolio .portfolio-card img {
@@ -194,9 +188,45 @@
       font-size: 1.2rem;
     }
 
-    .portfolio .portfolio-card p {
-      color: #cccccc;
-      font-size: 0.9rem;
+    .portfolio .portfolio-card .details {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 15px;
+      padding: 1rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.5s ease;
+    }
+
+    .portfolio .portfolio-card .details button {
+      background: linear-gradient(45deg, #6a11cb, #2575fc);
+      border: none;
+      padding: 0.5rem 1rem;
+      margin: 0.5rem;
+      border-radius: 10px;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .portfolio .portfolio-card .details button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
@@ -218,20 +248,54 @@
   </section>
 
   <section id="portfolio" class="portfolio">
-    <div class="portfolio-title">Portfolio</div> <!-- Velký nadpis nad celou sekcí -->
-    <div class="portfolio-card hejlovec">
+    <div class="portfolio-title">Portfolio</div>
+    <div class="portfolio-card" onclick="toggleDetails(this)">
       <h3>Hejlovec</h3>
       <img src="https://yt3.googleusercontent.com/mT84AwrYu0YGGVMvozrmqg1d9DDOJxXwm26TRaecObw-qEFff4HbRfcbOohGFJrg0xpWsVHoKg=s900-c-k-c0x00ffffff-no-rj" alt="Obrázek hejlovec">
-      <p>400 tis. Odběratelů</p>
+      <div class="details">
+        <button>Videa</button>
+        <button>Kanál</button>
+      </div>
     </div>
-    <div class="portfolio-card">
+    <div class="portfolio-card" onclick="toggleDetails(this)">
       <h3>Projekt 2</h3>
       <p>Popis projektu...</p>
+      <div class="details">
+        <button>Videa</button>
+        <button>Kanál</button>
+      </div>
     </div>
-    <div class="portfolio-card">
+    <div class="portfolio-card" onclick="toggleDetails(this)">
       <h3>Projekt 3</h3>
       <p>Popis projektu...</p>
+      <div class="details">
+        <button>Videa</button>
+        <button>Kanál</button>
+      </div>
     </div>
   </section>
+
+  <script>
+    function toggleDetails(card) {
+      const details = card.querySelector('.details');
+      // Zavře všechny ostatní detaily
+      document.querySelectorAll('.portfolio .details').forEach(detail => {
+        if (detail !== details) {
+          detail.style.display = 'none';
+        }
+      });
+      // Přepne viditelnost detailů
+      details.style.display = details.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Skryje detaily při kliknutí mimo karty
+    document.addEventListener('click', function (event) {
+      if (!event.target.closest('.portfolio-card')) {
+        document.querySelectorAll('.portfolio .details').forEach(detail => {
+          detail.style.display = 'none';
+        });
+      }
+    });
+  </script>
 </body>
 </html>
