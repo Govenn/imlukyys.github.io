@@ -172,6 +172,19 @@
       outline: 2px solid rgba(255, 255, 255, 0.1); /* Jemnější outline */
     }
 
+    .portfolio .portfolio-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .portfolio .portfolio-card:hover img {
+      transform: scale(1.1);
+    }
+
     .portfolio .portfolio-card.active {
       transform: scale(1.1); /* Zvětšení pouze vybrané karty */
       outline-width: 3px; /* Zvýrazněný rámeček */
@@ -258,51 +271,7 @@
           <button>Kanál</button>
         </div>
       </div>
-      <div class="portfolio-card irl-hejlovec" onclick="toggleActive(this)">
-        <h3>IRL Hejlovec</h3>
-        <img src="https://yt3.googleusercontent.com/FFsgDhzJs_NHW0I7v8OLhnV-463U4m8gNhRXAPXwq4TMaFAINjvDy-vLC3qcxqyvViyOBea8BQ=s900-c-k-c0x00ffffff-no-rj" alt="IRL Hejlovec">
-        <p>Popis projektu...</p>
-        <div class="details">
-          <button>Videa</button>
-          <button>Kanál</button>
-        </div>
-      </div>
-      <div class="portfolio-card hejl" onclick="toggleActive(this)">
-        <h3>HEJL</h3>
-        <img src="https://yt3.googleusercontent.com/q25h0R_DstVHCvhD4_C1d-vSRZlGV5VzRhyE6HsRKJLX5ecFbMdC-s8vFnGg7PaD9Itml_d3=s900-c-k-c0x00ffffff-no-rj" alt="HEJL">
-        <p>Popis projektu...</p>
-        <div class="details">
-          <button>Videa</button>
-          <button>Kanál</button>
-        </div>
-      </div>
-      <div class="portfolio-card smile" onclick="toggleActive(this)">
-        <h3>Smile :)</h3>
-        <img src="https://yt3.googleusercontent.com/XtAT3K1SjZiP1JWeUP4-KOa5XJpFlbS4mSZdCmSMdiEppYF5CZRZ9xp0C_allnSsyPmc6KQBPA=s160-c-k-c0x00ffffff-no-rj" alt="Smile :)">
-        <p>Popis projektu...</p>
-        <div class="details">
-          <button>Videa</button>
-          <button>Kanál</button>
-        </div>
-      </div>
-      <div class="portfolio-card jartex" onclick="toggleActive(this)">
-        <h3>Jartex Games</h3>
-        <img src="https://yt3.googleusercontent.com/v_bt_WI3GWVGylWgf3g7ZgMCduvgg4q-lZ550GMcS48zRz-6mInWQ5fDW4P_bEiI3QiYlwfQ=s160-c-k-c0x00ffffff-no-rj" alt="Jartex Games">
-        <p>Popis projektu...</p>
-        <div class="details">
-          <button>Videa</button>
-          <button>Kanál</button>
-        </div>
-      </div>
-      <div class="portfolio-card merkurix" onclick="toggleActive(this)">
-        <h3>MerkuriX</h3>
-        <img src="https://yt3.googleusercontent.com/UTlehHa1M0GVrpRFXt5SC61VJPBIVA_tRizZTWtbAhQGdUKyFqNpKZSFXl2lhJJSzWHr7sknDg=s160-c-k-c0x00ffffff-no-rj" alt="MerkuriX">
-        <p>Popis projektu...</p>
-        <div class="details">
-          <button>Videa</button>
-          <button>Kanál</button>
-        </div>
-      </div>
+      <!-- Další rámečky -->
     </div>
   </section>
 
