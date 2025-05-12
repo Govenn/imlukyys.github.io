@@ -119,6 +119,7 @@
       margin: 4rem auto;
       padding: 2rem;
       max-width: 1200px;
+      align-items: start; /* Zarovná ostatní karty nahoru */
     }
 
     .portfolio .portfolio-title {
@@ -149,22 +150,23 @@
 
     /* Zvýraznění vybrané karty */
     .portfolio .portfolio-card.active {
-      transform: scale(1.1); /* Zvětšení */
+      transform: scale(1.1); /* Zvětšení pouze vybrané karty */
       outline-width: 3px; /* Jemnější rám */
       transition: transform 0.3s ease, outline-width 0.3s ease;
+      z-index: 10; /* Umístění nad ostatními prvky */
     }
 
-    /* Specifické barvy outline */
-    .portfolio .portfolio-card.hejlovec.active {
-      outline-color: red;
+    /* Skrytí tlačítek u ostatních karet */
+    .portfolio .portfolio-card .details {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
-    .portfolio .portfolio-card.irl-hejlovec.active {
-      outline-color: pink;
-    }
-
-    .portfolio .portfolio-card.hejl.active {
-      outline-color: cyan;
+    .portfolio .portfolio-card.active .details {
+      display: block;
+      opacity: 1;
+      transform: translateY(10px);
     }
 
     .portfolio .portfolio-card img {
@@ -191,36 +193,6 @@
       color: #cccccc;
       font-size: 0.9rem;
     }
-
-    /* Animace tlačítek */
-    .portfolio .details {
-      display: none;
-      opacity: 0;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    .portfolio .portfolio-card.active .details {
-      display: block;
-      opacity: 1;
-      transform: translateY(10px);
-    }
-
-    .portfolio .details button {
-      background: linear-gradient(45deg, #6a11cb, #2575fc);
-      border: none;
-      padding: 0.5rem 1rem;
-      margin: 0.5rem;
-      border-radius: 10px;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .portfolio .details button:hover {
-      transform: scale(1.1);
-      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
-    }
   </style>
 </head>
 <body>
@@ -235,7 +207,7 @@
   <section id="about">
     <div class="about-content">
       <h2>O mně</h2>
-      <p>Čau! Jsem profesionální video editor, který má rád editovat videa a pracovat s různými Youtubery.</p>
+      <p>Jsem profesionální video editor, který spolupracuje s různými YouTubery.</p>
       <img src="https://raw.githubusercontent.com/Govenn/imlukyys.github.io/refs/heads/main/lukasek.png" alt="ImLukyys">
     </div>
   </section>
@@ -277,6 +249,7 @@
     function toggleActive(card) {
       // Zrušit aktivní třídu na ostatních kartách
       document.querySelectorAll('.portfolio-card').forEach(c => c.classList.remove('active'));
+
       // Přidat aktivní třídu na kliknutou kartu
       card.classList.add('active');
     }
