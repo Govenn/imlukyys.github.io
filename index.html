@@ -56,62 +56,7 @@
       transform: scale(1.1);
     }
 
-    /* Sekce "O mně" */
-    #about {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      padding: 6rem 2rem;
-      max-width: 1200px;
-      margin: 6rem auto 0 auto;
-    }
-
-    #about .about-content {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      padding: 2rem;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-      text-align: center;
-      transition: transform 0.5s ease, box-shadow 0.5s ease, outline 0.3s ease;
-      width: 100%;
-      max-width: 500px;
-      outline: 2px solid transparent;
-    }
-
-    #about .about-content:hover {
-      transform: translateY(-10px) scale(1.05);
-      box-shadow: 0 15px 30px rgba(255, 255, 255, 0.3);
-      outline: 2px solid #6a11cb;
-    }
-
-    #about .about-content h2 {
-      color: #ffffff;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
-
-    #about .about-content p {
-      color: #cccccc;
-      font-size: 1rem;
-      line-height: 1.8;
-    }
-
-    #about .about-content img {
-      margin-top: 1rem;
-      max-width: 100%;
-      height: auto;
-      border-radius: 15px;
-      box-shadow: 0 8px 15px rgba(255, 255, 255, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    #about .about-content img:hover {
-      transform: scale(1.1);
-      box-shadow: 0 12px 25px rgba(255, 255, 255, 0.3);
-    }
-
-    /* Portfolio sekce */
+    /* Sekce Portfolio */
     .portfolio {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -190,6 +135,15 @@
     .portfolio .portfolio-card.hejl.active {
       outline-color: cyan;
     }
+    .portfolio .portfolio-card.smile.active {
+      outline-color: green;
+    }
+    .portfolio .portfolio-card.jartex.active {
+      outline-color: red;
+    }
+    .portfolio .portfolio-card.merkurix.active {
+      outline-color: yellow;
+    }
 
     /* Skrytí tlačítek u ostatních karet */
     .portfolio .portfolio-card .details {
@@ -233,14 +187,6 @@
     </nav>
   </header>
 
-  <section id="about">
-    <div class="about-content">
-      <h2>O mně</h2>
-      <p>Jsem profesionální video editor, který spolupracuje s různými YouTubery.</p>
-      <img src="https://raw.githubusercontent.com/Govenn/imlukyys.github.io/refs/heads/main/lukasek.png" alt="ImLukyys">
-    </div>
-  </section>
-
   <section id="portfolio">
     <div class="portfolio">
       <div class="portfolio-title">Portfolio</div>
@@ -265,6 +211,33 @@
       <div class="portfolio-card hejl" onclick="toggleActive(this)">
         <h3>HEJL</h3>
         <img src="https://yt3.googleusercontent.com/q25h0R_DstVHCvhD4_C1d-vSRZlGV5VzRhyE6HsRKJLX5ecFbMdC-s8vFnGg7PaD9Itml_d3=s900-c-k-c0x00ffffff-no-rj" alt="HEJL">
+        <p>Popis projektu...</p>
+        <div class="details">
+          <button>Videa</button>
+          <button>Kanál</button>
+        </div>
+      </div>
+      <div class="portfolio-card smile" onclick="toggleActive(this)">
+        <h3>Smile :)</h3>
+        <img src="https://yt3.googleusercontent.com/XtAT3K1SjZiP1JWeUP4-KOa5XJpFlbS4mSZdCmSMdiEppYF5CZRZ9xp0C_allnSsyPmc6KQBPA=s160-c-k-c0x00ffffff-no-rj" alt="Smile :)">
+        <p>Popis projektu...</p>
+        <div class="details">
+          <button>Videa</button>
+          <button>Kanál</button>
+        </div>
+      </div>
+      <div class="portfolio-card jartex" onclick="toggleActive(this)">
+        <h3>Jartex Games</h3>
+        <img src="https://yt3.googleusercontent.com/v_bt_WI3GWVGylWgf3g7ZgMCduvgg4q-lZ550GMcS48zRz-6mInWQ5fDW4P_bEiI3QiYlwfQ=s160-c-k-c0x00ffffff-no-rj" alt="Jartex Games">
+        <p>Popis projektu...</p>
+        <div class="details">
+          <button>Videa</button>
+          <button>Kanál</button>
+        </div>
+      </div>
+      <div class="portfolio-card merkurix" onclick="toggleActive(this)">
+        <h3>MerkuriX</h3>
+        <img src="https://yt3.googleusercontent.com/UTlehHa1M0GVrpRFXt5SC61VJPBIVA_tRizZTWtbAhQGdUKyFqNpKZSFXl2lhJJSzWHr7sknDg=s160-c-k-c0x00ffffff-no-rj" alt="MerkuriX">
         <p>Popis projektu...</p>
         <div class="details">
           <button>Videa</button>
