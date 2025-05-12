@@ -9,34 +9,9 @@
     body {
       margin: 0;
       font-family: 'Arial', sans-serif;
-      background-color: #0d0d0d; /* Tmavší pozadí */
+      background-color: #0d0d0d; /* Tmavé pozadí */
       color: white;
       overflow-x: hidden;
-    }
-
-    /* Jemné dynamické pozadí */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, #0d0d0d, #000000);
-      z-index: -1;
-    }
-
-    /* Jemné částice na pozadí */
-    body::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://i.imgur.com/ZF6s192.png') repeat; /* Jemné částice */
-      opacity: 0.05; /* Velmi jemné */
-      z-index: -1;
     }
 
     /* Hlavní navigace */
@@ -111,14 +86,16 @@
       padding: 2rem;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
       text-align: center;
-      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      transition: transform 0.5s ease, box-shadow 0.5s ease, outline 0.3s ease;
       width: 100%;
       max-width: 500px;
+      outline: 2px solid transparent;
     }
 
     #about .about-content:hover {
       transform: translateY(-10px) scale(1.05);
       box-shadow: 0 15px 30px rgba(255, 255, 255, 0.3);
+      outline: 2px solid #6a11cb;
     }
 
     #about .about-content img {
@@ -161,14 +138,21 @@
       border-radius: 20px;
       padding: 1.5rem;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, outline 0.3s ease;
       text-align: center;
       border: 1px solid rgba(255, 255, 255, 0.1);
+      outline: 2px solid transparent;
     }
 
     .portfolio .portfolio-card:hover {
       transform: scale(1.05);
       box-shadow: 0 15px 30px rgba(255, 255, 255, 0.3);
+      outline: 2px solid #6a11cb; /* Default outline */
+    }
+
+    /* Speciální efekt pro hejlovec */
+    .portfolio .portfolio-card.hejlovec:hover {
+      outline: 2px solid red; /* Červená outline */
     }
 
     .portfolio .portfolio-card img {
@@ -214,7 +198,7 @@
   </section>
 
   <section id="portfolio" class="portfolio">
-    <div class="portfolio-card">
+    <div class="portfolio-card hejlovec">
       <h3>hejlovec</h3>
       <img src="https://yt3.googleusercontent.com/mT84AwrYu0YGGVMvozrmqg1d9DDOJxXwm26TRaecObw-qEFff4HbRfcbOohGFJrg0xpWsVHoKg=s900-c-k-c0x00ffffff-no-rj" alt="Obrázek hejlovec">
       <p>Popis projektu...</p>
