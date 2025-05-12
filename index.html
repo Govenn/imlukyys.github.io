@@ -69,6 +69,60 @@
       transform: scale(1.1);
     }
 
+    /* Sekce "O mně" */
+    #about {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 6rem auto 0 auto;
+    }
+
+    #about .about-content {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      transition: transform 0.5s ease, box-shadow 0.5s ease, outline 0.3s ease;
+      width: 100%;
+      max-width: 500px;
+      outline: 2px solid transparent;
+    }
+
+    #about .about-content:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 30px rgba(255, 255, 255, 0.3);
+      outline: 2px solid #6a11cb;
+    }
+
+    #about .about-content img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    #about .about-content img:hover {
+      transform: scale(1.1);
+    }
+
+    #about .about-content h2 {
+      color: #ffffff;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    #about .about-content p {
+      color: #cccccc;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
     /* Portfolio sekce */
     .portfolio {
       display: grid;
@@ -118,30 +172,6 @@
       outline-color: #6a11cb;
     }
 
-    .portfolio .portfolio-card.hejlovec {
-      outline-color: red;
-    }
-
-    .portfolio .portfolio-card.hejlovec:hover {
-      outline-color: #ff4444;
-    }
-
-    .portfolio .portfolio-card.irl-hejlovec {
-      outline-color: pink;
-    }
-
-    .portfolio .portfolio-card.irl-hejlovec:hover {
-      outline-color: #ff99cc;
-    }
-
-    .portfolio .portfolio-card.hejl {
-      outline-color: cyan;
-    }
-
-    .portfolio .portfolio-card.hejl:hover {
-      outline-color: #00ffff;
-    }
-
     .portfolio .portfolio-card img {
       width: 100px;
       height: 100px;
@@ -161,9 +191,44 @@
       font-size: 1.2rem;
     }
 
-    .portfolio .portfolio-card p {
-      color: #cccccc;
-      font-size: 0.9rem;
+    .portfolio .details {
+      display: none;
+      position: absolute;
+      top: 120%;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 15px;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .portfolio .details button {
+      background: linear-gradient(45deg, #6a11cb, #2575fc);
+      border: none;
+      padding: 0.5rem 1rem;
+      margin: 0.5rem;
+      border-radius: 10px;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .portfolio .details button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
@@ -176,23 +241,15 @@
     </nav>
   </header>
 
-  <section id="portfolio" class="portfolio">
-    <div class="portfolio-title">Portfolio</div>
-    <div class="portfolio-card hejlovec">
-      <h3>Hejlovec</h3>
-      <img src="https://yt3.googleusercontent.com/mT84AwrYu0YGGVMvozrmqg1d9DDOJxXwm26TRaecObw-qEFff4HbRfcbOohGFJrg0xpWsVHoKg=s900-c-k-c0x00ffffff-no-rj" alt="Obrázek hejlovec">
-      <p>396 tis. odběratelů</p>
+  <section id="about">
+    <div class="about-content">
+      <h2>O mně</h2>
+      <p>Jsem profesionální video editor, který spolupracuje s různými YouTubery.</p>
     </div>
-    <div class="portfolio-card irl-hejlovec">
-      <h3>IRL Hejlovec</h3>
-      <img src="https://yt3.googleusercontent.com/FFsgDhzJs_NHW0I7v8OLhnV-463U4m8gNhRXAPXwq4TMaFAINjvDy-vLC3qcxqyvViyOBea8BQ=s900-c-k-c0x00ffffff-no-rj" alt="Obrázek IRL Hejlovec">
-      <p>Popis projektu...</p>
-    </div>
-    <div class="portfolio-card hejl">
-      <h3>HEJL</h3>
-      <img src="https://yt3.googleusercontent.com/q25h0R_DstVHCvhD4_C1d-vSRZlGV5VzRhyE6HsRKJLX5ecFbMdC-s8vFnGg7PaD9Itml_d3=s900-c-k-c0x00ffffff-no-rj" alt="Obrázek HEJL">
-      <p>Popis projektu...</p>
-    </div>
+  </section>
+
+  <section id="portfolio">
+    <div class="portfolio"></div>
   </section>
 </body>
 </html>
