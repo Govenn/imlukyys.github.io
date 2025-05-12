@@ -56,6 +56,61 @@
       transform: scale(1.1);
     }
 
+    /* Sekce "O mně" */
+    #about {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 6rem auto 0 auto;
+    }
+
+    #about .about-content {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      transition: transform 0.5s ease, box-shadow 0.5s ease, outline 0.3s ease;
+      width: 100%;
+      max-width: 500px;
+      outline: 2px solid transparent;
+    }
+
+    #about .about-content:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 30px rgba(255, 255, 255, 0.3);
+      outline: 2px solid #6a11cb;
+    }
+
+    #about .about-content h2 {
+      color: #ffffff;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    #about .about-content p {
+      color: #cccccc;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    #about .about-content img {
+      margin-top: 1rem;
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 8px 15px rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #about .about-content img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 25px rgba(255, 255, 255, 0.3);
+    }
+
     /* Sekce Portfolio */
     .portfolio {
       display: grid;
@@ -186,6 +241,14 @@
       <a href="#portfolio">Portfolio</a>
     </nav>
   </header>
+
+  <section id="about">
+    <div class="about-content">
+      <h2>O mně</h2>
+      <p>Jsem profesionální video editor, který spolupracuje s různými YouTubery.</p>
+      <img src="https://raw.githubusercontent.com/Govenn/imlukyys.github.io/refs/heads/main/lukasek.png" alt="ImLukyys">
+    </div>
+  </section>
 
   <section id="portfolio">
     <div class="portfolio">
