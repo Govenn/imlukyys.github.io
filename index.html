@@ -14,7 +14,7 @@
       overflow-x: hidden;
     }
 
-    /* Efekty pro pozadí */
+    /* Dynamické pozadí */
     body::before {
       content: '';
       position: fixed;
@@ -22,20 +22,16 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(20, 20, 20, 1) 100%);
+      background: linear-gradient(120deg, #6a11cb, #2575fc);
+      background-size: 400% 400%;
+      animation: gradientMove 15s ease infinite;
       z-index: -1;
     }
 
-    /* Animace při scrollování */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     /* Hlavní navigace */
@@ -51,6 +47,12 @@
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      animation: slideDown 1s ease-out;
+    }
+
+    @keyframes slideDown {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(0); }
     }
 
     header .logo {
@@ -61,33 +63,8 @@
     }
 
     @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.1);
-      }
-    }
-
-    header nav {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    header nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    header nav a:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-      color: #6a11cb;
-      transform: scale(1.1);
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
     }
 
     /* Sekce "O mně" */
@@ -100,6 +77,9 @@
       padding: 4rem 2rem;
       max-width: 1200px;
       margin: auto;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+      animation-delay: 0.5s;
     }
 
     #about .about-content {
@@ -139,7 +119,7 @@
       color: #cccccc;
     }
 
-    /* Sekce "Portfolio" */
+    /* Portfolio sekce */
     .portfolio {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -157,13 +137,13 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
       text-align: center;
       position: relative;
-      border: 2px solid #6a11cb; /* Default outline */
+      border: 2px solid #6a11cb;
     }
 
     .portfolio .portfolio-card:hover {
       transform: scale(1.1);
-      box-shadow: 0 10px 30px rgba(255, 0, 0, 0.7); /* Červený stín */
-      border-color: red; /* Změna na červenou */
+      box-shadow: 0 10px 30px rgba(255, 0, 0, 0.7);
+      border-color: red;
     }
 
     .portfolio .portfolio-card img {
@@ -186,68 +166,51 @@
     .portfolio .portfolio-card h3 {
       color: #ffffff;
       margin: 1rem 0;
-      animation: text-glow 2s infinite;
+      animation: textGlow 2s infinite;
     }
 
-    @keyframes text-glow {
-      0%, 100% {
-        text-shadow: 0 0 5px #ffffff, 0 0 10px #6a11cb, 0 0 20px #6a11cb;
-      }
-      50% {
-        text-shadow: 0 0 10px #ffffff, 0 0 20px #ff0000, 0 0 30px #ff0000;
-      }
+    @keyframes textGlow {
+      0%, 100% { text-shadow: 0 0 5px #ffffff, 0 0 10px #6a11cb, 0 0 20px #6a11cb; }
+      50% { text-shadow: 0 0 10px #ffffff, 0 0 20px #ff0000, 0 0 30px #ff0000; }
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
   </style>
 </head>
 <body>
+  <header>
+    <div class="logo">Govenn</div>
+    <nav>
+      <a href="#about">O mně</a>
+      <a href="#portfolio">Portfolio</a>
+    </nav>
+  </header>
 
-<header>
-  <div class="logo">Govenn</div>
-  <nav>
-    <a href="#about">O mně</a>
-    <a href="#portfolio">Portfolio</a>
-  </nav>
-</header>
+  <section id="about">
+    <div class="about-content">
+      <img src="https://media.discordapp.net/attachments/1258383573958918224/1371217051045204040/image.png?format=webp&quality=lossless" alt="Editor">
+      <h2>O mně</h2>
+      <p>Jsem profesionální video editor, který spolupracuje s různými YouTubery.</p>
+    </div>
+  </section>
 
-<section id="about" class="fade-in">
-  <div class="about-content">
-    <img src="https://media.discordapp.net/attachments/1258383573958918224/1371217051045204040/image.png?format=webp&quality=lossless" alt="Editor">
-    <h2>O mně</h2>
-    <p>Jsem profesionální video editor, který spolupracuje s různými YouTubery.</p>
-  </div>
-</section>
-
-<section id="portfolio" class="portfolio fade-in">
-  <div class="portfolio-card">
-    <h3>hejlovec</h3>
-    <img src="https://yt3.googleusercontent.com/mT84AwrYu0YGGVMvozrmqg1d9DDOJxXwm26TRaecObw-qEFff4HbRfcbOohGFJrg0xpWsVHoKg=s900-c-k-c0x00ffffff-no-rj" 
-         alt="Obrázek hejlovec">
-    <p>Popis projektu...</p>
-  </div>
-  <div class="portfolio-card">
-    <h3>Projekt 2</h3>
-    <p>Popis projektu...</p>
-  </div>
-  <div class="portfolio-card">
-    <h3>Projekt 3</h3>
-    <p>Popis projektu...</p>
-  </div>
-</section>
-
-<script>
-  // Přidání animací při scrollování
-  const fadeInElements = document.querySelectorAll('.fade-in');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  });
-
-  fadeInElements.forEach(el => observer.observe(el));
-</script>
-
+  <section id="portfolio" class="portfolio">
+    <div class="portfolio-card">
+      <h3>hejlovec</h3>
+      <img src="https://yt3.googleusercontent.com/mT84AwrYu0YGGVMvozrmqg1d9DDOJxXwm26TRaecObw-qEFff4HbRfcbOohGFJrg0xpWsVHoKg=s900-c-k-c0x00ffffff-no-rj" alt="Obrázek hejlovec">
+      <p>Popis projektu...</p>
+    </div>
+    <div class="portfolio-card">
+      <h3>Projekt 2</h3>
+      <p>Popis projektu...</p>
+    </div>
+    <div class="portfolio-card">
+      <h3>Projekt 3</h3>
+      <p>Popis projektu...</p>
+    </div>
+  </section>
 </body>
 </html>
