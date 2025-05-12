@@ -125,7 +125,7 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease, outline-color 0.3s ease;
       text-align: center;
       position: relative;
-      outline: 4px solid rgba(255, 255, 255, 0.1);
+      outline: 2px solid rgba(255, 255, 255, 0.1); /* Jemnější outline */
     }
 
     .portfolio .portfolio-card:hover {
@@ -136,7 +136,7 @@
     /* Zvýraznění vybrané karty */
     .portfolio .portfolio-card.active {
       transform: scale(1.1); /* Zvětšení */
-      outline-width: 6px; /* Zvýraznění rámu */
+      outline-width: 3px; /* Jemnější rám */
       transition: transform 0.3s ease, outline-width 0.3s ease;
     }
 
@@ -177,6 +177,36 @@
       color: #cccccc;
       font-size: 0.9rem;
     }
+
+    /* Animace tlačítek */
+    .portfolio .details {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .portfolio .portfolio-card.active .details {
+      display: block;
+      opacity: 1;
+      transform: translateY(10px);
+    }
+
+    .portfolio .details button {
+      background: linear-gradient(45deg, #6a11cb, #2575fc);
+      border: none;
+      padding: 0.5rem 1rem;
+      margin: 0.5rem;
+      border-radius: 10px;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .portfolio .details button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+    }
   </style>
 </head>
 <body>
@@ -202,25 +232,37 @@
         <h3>Hejlovec</h3>
         <img src="https://yt3.googleusercontent.com/mT84AwrYu0YGGVMvozrmqg1d9DDOJxXwm26TRaecObw-qEFff4HbRfcbOohGFJrg0xpWsVHoKg=s900-c-k-c0x00ffffff-no-rj" alt="Hejlovec">
         <p>396 tis. odběratelů</p>
+        <div class="details">
+          <button>Videa</button>
+          <button>Kanál</button>
+        </div>
       </div>
       <div class="portfolio-card irl-hejlovec" onclick="toggleActive(this)">
         <h3>IRL Hejlovec</h3>
         <img src="https://yt3.googleusercontent.com/FFsgDhzJs_NHW0I7v8OLhnV-463U4m8gNhRXAPXwq4TMaFAINjvDy-vLC3qcxqyvViyOBea8BQ=s900-c-k-c0x00ffffff-no-rj" alt="IRL Hejlovec">
         <p>Popis projektu...</p>
+        <div class="details">
+          <button>Videa</button>
+          <button>Kanál</button>
+        </div>
       </div>
       <div class="portfolio-card hejl" onclick="toggleActive(this)">
         <h3>HEJL</h3>
         <img src="https://yt3.googleusercontent.com/q25h0R_DstVHCvhD4_C1d-vSRZlGV5VzRhyE6HsRKJLX5ecFbMdC-s8vFnGg7PaD9Itml_d3=s900-c-k-c0x00ffffff-no-rj" alt="HEJL">
         <p>Popis projektu...</p>
+        <div class="details">
+          <button>Videa</button>
+          <button>Kanál</button>
+        </div>
       </div>
     </div>
   </section>
 
   <script>
     function toggleActive(card) {
-      // Zrušit zvýraznění na všech kartách
+      // Zrušit aktivní třídu na ostatních kartách
       document.querySelectorAll('.portfolio-card').forEach(c => c.classList.remove('active'));
-      // Zvýraznit pouze kliknutou kartu
+      // Přidat aktivní třídu na kliknutou kartu
       card.classList.add('active');
     }
   </script>
