@@ -27,12 +27,6 @@
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-      animation: slideDown 1s ease-out;
-    }
-
-    @keyframes slideDown {
-      0% { transform: translateY(-100%); }
-      100% { transform: translateY(0); }
     }
 
     header .logo {
@@ -40,12 +34,6 @@
       font-weight: bold;
       color: #ffffff;
       letter-spacing: 1px;
-      animation: logoFadeIn 1.5s ease;
-    }
-
-    @keyframes logoFadeIn {
-      0% { opacity: 0; transform: scale(0.8); }
-      100% { opacity: 1; transform: scale(1); }
     }
 
     header nav {
@@ -98,19 +86,6 @@
       outline: 2px solid #6a11cb;
     }
 
-    #about .about-content img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      margin-bottom: 1rem;
-      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
-      transition: transform 0.3s ease;
-    }
-
-    #about .about-content img:hover {
-      transform: scale(1.1);
-    }
-
     #about .about-content h2 {
       color: #ffffff;
       margin-bottom: 1rem;
@@ -141,16 +116,6 @@
       margin-bottom: 2rem;
       color: #ffffff;
       text-shadow: 0px 0px 10px #6a11cb, 0px 0px 20px #6a11cb;
-      animation: glow 2s infinite alternate;
-    }
-
-    @keyframes glow {
-      from {
-        text-shadow: 0px 0px 10px #6a11cb, 0px 0px 20px #6a11cb, 0px 0px 30px #6a11cb;
-      }
-      to {
-        text-shadow: 0px 0px 20px #8b11ed, 0px 0px 30px #8b11ed, 0px 0px 40px #8b11ed;
-      }
     }
 
     .portfolio .portfolio-card {
@@ -159,17 +124,54 @@
       padding: 1.5rem;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
       cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, outline-color 0.3s ease, color 0.3s ease;
       text-align: center;
       position: relative;
       outline: 4px solid rgba(255, 255, 255, 0.1);
-      transition: outline-color 0.5s ease, transform 0.5s ease;
     }
 
     .portfolio .portfolio-card:hover {
       transform: scale(1.05);
       box-shadow: 0 15px 30px rgba(255, 255, 255, 0.3);
-      outline-color: #6a11cb;
+    }
+
+    /* Hejlovec */
+    .portfolio .portfolio-card.hejlovec {
+      outline-color: rgba(255, 0, 0, 0.5);
+    }
+
+    .portfolio .portfolio-card.hejlovec:hover {
+      outline-color: red;
+    }
+
+    .portfolio .portfolio-card.hejlovec h3:hover {
+      color: red;
+    }
+
+    /* IRL Hejlovec */
+    .portfolio .portfolio-card.irl-hejlovec {
+      outline-color: rgba(255, 105, 180, 0.5); /* Růžová */
+    }
+
+    .portfolio .portfolio-card.irl-hejlovec:hover {
+      outline-color: pink;
+    }
+
+    .portfolio .portfolio-card.irl-hejlovec h3:hover {
+      color: pink;
+    }
+
+    /* HEJL */
+    .portfolio .portfolio-card.hejl {
+      outline-color: rgba(0, 255, 255, 0.5); /* Cyan */
+    }
+
+    .portfolio .portfolio-card.hejl:hover {
+      outline-color: cyan;
+    }
+
+    .portfolio .portfolio-card.hejl h3:hover {
+      color: cyan;
     }
 
     .portfolio .portfolio-card img {
@@ -189,6 +191,12 @@
       color: #ffffff;
       margin: 1rem 0;
       font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+
+    .portfolio .portfolio-card p {
+      color: #cccccc;
+      font-size: 0.9rem;
     }
 
     .portfolio .details {
@@ -200,7 +208,6 @@
       background: rgba(255, 255, 255, 0.1);
       padding: 1rem;
       border-radius: 15px;
-      animation: fadeIn 0.5s ease;
     }
 
     .portfolio .details button {
@@ -218,17 +225,6 @@
     .portfolio .details button:hover {
       transform: scale(1.1);
       box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
   </style>
 </head>
@@ -251,7 +247,7 @@
   <section id="portfolio">
     <div class="portfolio">
       <div class="portfolio-title">Portfolio</div>
-      <div class="portfolio-card" onclick="toggleDetails(this)">
+      <div class="portfolio-card hejlovec" onclick="toggleDetails(this)">
         <h3>Hejlovec</h3>
         <img src="https://yt3.googleusercontent.com/mT84AwrYu0YGGVMvozrmqg1d9DDOJxXwm26TRaecObw-qEFff4HbRfcbOohGFJrg0xpWsVHoKg=s900-c-k-c0x00ffffff-no-rj" alt="Hejlovec">
         <p>396 tis. odběratelů</p>
@@ -260,7 +256,7 @@
           <button>Kanál</button>
         </div>
       </div>
-      <div class="portfolio-card" onclick="toggleDetails(this)">
+      <div class="portfolio-card irl-hejlovec" onclick="toggleDetails(this)">
         <h3>IRL Hejlovec</h3>
         <img src="https://yt3.googleusercontent.com/FFsgDhzJs_NHW0I7v8OLhnV-463U4m8gNhRXAPXwq4TMaFAINjvDy-vLC3qcxqyvViyOBea8BQ=s900-c-k-c0x00ffffff-no-rj" alt="IRL Hejlovec">
         <p>Popis projektu...</p>
@@ -269,7 +265,7 @@
           <button>Kanál</button>
         </div>
       </div>
-      <div class="portfolio-card" onclick="toggleDetails(this)">
+      <div class="portfolio-card hejl" onclick="toggleDetails(this)">
         <h3>HEJL</h3>
         <img src="https://yt3.googleusercontent.com/q25h0R_DstVHCvhD4_C1d-vSRZlGV5VzRhyE6HsRKJLX5ecFbMdC-s8vFnGg7PaD9Itml_d3=s900-c-k-c0x00ffffff-no-rj" alt="HEJL">
         <p>Popis projektu...</p>
