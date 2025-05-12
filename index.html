@@ -57,6 +57,16 @@
       font-size: 1.8rem;
       font-weight: bold;
       color: #6a11cb;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
     }
 
     header nav {
@@ -77,6 +87,7 @@
     header nav a:hover {
       background-color: rgba(255, 255, 255, 0.1);
       color: #6a11cb;
+      transform: scale(1.1);
     }
 
     /* Sekce "O mně" */
@@ -98,6 +109,12 @@
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
       text-align: center;
       flex: 1 1 45%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #about .about-content:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 30px rgba(255, 255, 255, 0.3);
     }
 
     #about .about-content img {
@@ -106,6 +123,11 @@
       border-radius: 50%;
       margin-bottom: 1rem;
       box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    #about .about-content img:hover {
+      transform: rotate(10deg);
     }
 
     #about .about-content h2 {
@@ -135,13 +157,13 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
       text-align: center;
       position: relative;
-      border: 2px solid #6a11cb;
+      border: 2px solid #6a11cb; /* Default outline */
     }
 
     .portfolio .portfolio-card:hover {
       transform: scale(1.1);
-      box-shadow: 0 10px 30px rgba(106, 17, 203, 0.7);
-      border-color: #ffffff;
+      box-shadow: 0 10px 30px rgba(255, 0, 0, 0.7); /* Červený stín */
+      border-color: red; /* Změna na červenou */
     }
 
     .portfolio .portfolio-card img {
@@ -153,11 +175,27 @@
       box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
       border: 2px solid #000;
       outline: 5px solid #555;
+      transition: transform 0.3s ease, outline-color 0.3s ease;
+    }
+
+    .portfolio .portfolio-card:hover img {
+      transform: rotate(-5deg);
+      outline-color: red;
     }
 
     .portfolio .portfolio-card h3 {
       color: #ffffff;
       margin: 1rem 0;
+      animation: text-glow 2s infinite;
+    }
+
+    @keyframes text-glow {
+      0%, 100% {
+        text-shadow: 0 0 5px #ffffff, 0 0 10px #6a11cb, 0 0 20px #6a11cb;
+      }
+      50% {
+        text-shadow: 0 0 10px #ffffff, 0 0 20px #ff0000, 0 0 30px #ff0000;
+      }
     }
   </style>
 </head>
