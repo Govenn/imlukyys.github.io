@@ -119,7 +119,6 @@
       margin: 4rem auto;
       padding: 2rem;
       max-width: 1200px;
-      align-items: start; /* Zarovná ostatní karty nahoru */
     }
 
     .portfolio .portfolio-title {
@@ -134,7 +133,7 @@
     .portfolio .portfolio-card {
       background: rgba(255, 255, 255, 0.05);
       border-radius: 20px;
-      padding: 1.5rem;
+      padding: 1rem;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease, outline-color 0.3s ease;
@@ -146,6 +145,31 @@
     .portfolio .portfolio-card:hover {
       transform: scale(1.05);
       box-shadow: 0 15px 30px rgba(255, 255, 255, 0.3);
+    }
+
+    .portfolio .portfolio-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .portfolio .portfolio-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .portfolio .portfolio-card h3 {
+      color: #ffffff;
+      margin: 1rem 0;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+
+    .portfolio .portfolio-card p {
+      color: #cccccc;
+      font-size: 0.9rem;
     }
 
     /* Zvýraznění vybrané karty */
