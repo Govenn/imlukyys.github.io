@@ -249,7 +249,37 @@
   </section>
 
   <section id="portfolio">
-    <div class="portfolio"></div>
+    <div class="portfolio">
+      <div class="portfolio-title">Portfolio</div>
+      <div class="portfolio-card" onclick="toggleDetails(this)">
+        <h3>Hejlovec</h3>
+        <img src="https://yt3.googleusercontent.com/mT84AwrYu0YGGVMvozrmqg1d9DDOJxXwm26TRaecObw-qEFff4HbRfcbOohGFJrg0xpWsVHoKg=s900-c-k-c0x00ffffff-no-rj" alt="Hejlovec">
+        <p>396 tis. odběratelů</p>
+        <div class="details">
+          <button>Videa</button>
+          <button>Kanál</button>
+        </div>
+      </div>
+    </div>
   </section>
+
+  <script>
+    function toggleDetails(card) {
+      const details = card.querySelector('.details');
+      const allDetails = document.querySelectorAll('.portfolio .details');
+      allDetails.forEach(detail => {
+        if (detail !== details) detail.style.display = 'none';
+      });
+      details.style.display = details.style.display === 'block' ? 'none' : 'block';
+    }
+
+    document.addEventListener('click', event => {
+      if (!event.target.closest('.portfolio-card')) {
+        document.querySelectorAll('.portfolio .details').forEach(detail => {
+          detail.style.display = 'none';
+        });
+      }
+    });
+  </script>
 </body>
 </html>
