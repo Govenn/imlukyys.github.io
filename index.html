@@ -134,8 +134,9 @@
     }
 
     .portfolio .portfolio-title {
+      grid-column: 1 / -1; /* Zajistí, že nadpis zabere celou šířku nad mřížkou */
       text-align: center;
-      font-size: 2rem;
+      font-size: 3rem;
       font-weight: bold;
       margin-bottom: 2rem;
       color: #ffffff;
@@ -217,7 +218,7 @@
   </section>
 
   <section id="portfolio" class="portfolio">
-    <div class="portfolio-title">Portfolio</div>
+    <div class="portfolio-title">Portfolio</div> <!-- Velký nadpis nad celou sekcí -->
     <div class="portfolio-card hejlovec">
       <h3>Hejlovec</h3>
       <img src="https://yt3.googleusercontent.com/mT84AwrYu0YGGVMvozrmqg1d9DDOJxXwm26TRaecObw-qEFff4HbRfcbOohGFJrg0xpWsVHoKg=s900-c-k-c0x00ffffff-no-rj" alt="Obrázek hejlovec">
