@@ -9,12 +9,12 @@
     body {
       margin: 0;
       font-family: 'Arial', sans-serif;
-      background-color: #000000;
+      background-color: #0d0d0d; /* Tmavší pozadí */
       color: white;
       overflow-x: hidden;
     }
 
-    /* Dynamické pozadí */
+    /* Jemné dynamické pozadí */
     body::before {
       content: '';
       position: fixed;
@@ -22,25 +22,30 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(120deg, #6a11cb, #2575fc);
-      background-size: 400% 400%;
-      animation: gradientMove 15s ease infinite;
+      background: radial-gradient(circle at center, #0d0d0d, #000000);
       z-index: -1;
     }
 
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    /* Jemné částice na pozadí */
+    body::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.imgur.com/ZF6s192.png') repeat; /* Jemné částice */
+      opacity: 0.05; /* Velmi jemné */
+      z-index: -1;
     }
 
     /* Hlavní navigace */
     header {
       background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(10px);
-      color: white;
-      position: sticky;
+      backdrop-filter: blur(20px);
+      position: fixed;
       top: 0;
+      width: 100%;
       z-index: 1000;
       padding: 1rem 2rem;
       display: flex;
@@ -58,38 +63,57 @@
     header .logo {
       font-size: 1.8rem;
       font-weight: bold;
-      color: #6a11cb;
-      animation: pulse 2s infinite;
+      color: #ffffff;
+      letter-spacing: 1px;
+      animation: logoFadeIn 1.5s ease;
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
+    @keyframes logoFadeIn {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    header nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    header nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    header nav a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: scale(1.1);
     }
 
     /* Sekce "O mně" */
     #about {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-around;
       flex-wrap: wrap;
-      gap: 20px;
-      padding: 4rem 2rem;
+      padding: 6rem 2rem;
       max-width: 1200px;
-      margin: auto;
-      opacity: 0;
-      animation: fadeIn 2s ease forwards;
-      animation-delay: 0.5s;
+      margin: 6rem auto 0 auto;
     }
 
     #about .about-content {
-      background: rgba(0, 0, 0, 0.8);
-      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
       padding: 2rem;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
       text-align: center;
-      flex: 1 1 45%;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      width: 100%;
+      max-width: 500px;
     }
 
     #about .about-content:hover {
@@ -98,8 +122,8 @@
     }
 
     #about .about-content img {
-      width: 200px;
-      height: 200px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       margin-bottom: 1rem;
       box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
@@ -107,76 +131,68 @@
     }
 
     #about .about-content img:hover {
-      transform: rotate(10deg);
+      transform: scale(1.1);
     }
 
     #about .about-content h2 {
       color: #ffffff;
       margin-bottom: 1rem;
+      font-size: 1.5rem;
     }
 
     #about .about-content p {
       color: #cccccc;
+      font-size: 1rem;
+      line-height: 1.8;
     }
 
     /* Portfolio sekce */
     .portfolio {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
       margin: 4rem auto;
       padding: 2rem;
       max-width: 1200px;
     }
 
     .portfolio .portfolio-card {
-      background: rgba(0, 0, 0, 0.8);
-      border-radius: 10px;
-      padding: 1rem;
-      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-align: center;
-      position: relative;
-      border: 2px solid #6a11cb;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .portfolio .portfolio-card:hover {
-      transform: scale(1.1);
-      box-shadow: 0 10px 30px rgba(255, 0, 0, 0.7);
-      border-color: red;
+      transform: scale(1.05);
+      box-shadow: 0 15px 30px rgba(255, 255, 255, 0.3);
     }
 
     .portfolio .portfolio-card img {
-      width: 150px;
-      height: 150px;
+      width: 100px;
+      height: 100px;
       object-fit: cover;
       border-radius: 10px;
-      margin-bottom: 10px;
-      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
-      border: 2px solid #000;
-      outline: 5px solid #555;
-      transition: transform 0.3s ease, outline-color 0.3s ease;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
     }
 
     .portfolio .portfolio-card:hover img {
-      transform: rotate(-5deg);
-      outline-color: red;
+      transform: scale(1.1);
     }
 
     .portfolio .portfolio-card h3 {
       color: #ffffff;
       margin: 1rem 0;
-      animation: textGlow 2s infinite;
+      font-size: 1.2rem;
     }
 
-    @keyframes textGlow {
-      0%, 100% { text-shadow: 0 0 5px #ffffff, 0 0 10px #6a11cb, 0 0 20px #6a11cb; }
-      50% { text-shadow: 0 0 10px #ffffff, 0 0 20px #ff0000, 0 0 30px #ff0000; }
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+    .portfolio .portfolio-card p {
+      color: #cccccc;
+      font-size: 0.9rem;
     }
   </style>
 </head>
