@@ -162,11 +162,22 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-align: center;
       position: relative;
+      outline: 4px solid rgba(255, 255, 255, 0.1); /* Výchozí outline */
+      transition: outline-color 0.5s ease, transform 0.5s ease;
     }
 
     .portfolio .portfolio-card:hover {
       transform: scale(1.05);
       box-shadow: 0 15px 30px rgba(255, 255, 255, 0.3);
+      outline-color: #6a11cb;
+    }
+
+    .portfolio .portfolio-card.hejlovec {
+      outline-color: red; /* Červený outline pro Hejlovce */
+    }
+
+    .portfolio .portfolio-card.hejlovec:hover {
+      outline-color: #ff4444; /* Změna červeného odstínu při hoveru */
     }
 
     .portfolio .portfolio-card img {
@@ -188,7 +199,7 @@
       font-size: 1.2rem;
     }
 
-    .portfolio .portfolio-card .details {
+    .portfolio .details {
       display: none;
       position: absolute;
       top: 100%;
@@ -201,7 +212,7 @@
       animation: fadeIn 0.5s ease;
     }
 
-    .portfolio .portfolio-card .details button {
+    .portfolio .details button {
       background: linear-gradient(45deg, #6a11cb, #2575fc);
       border: none;
       padding: 0.5rem 1rem;
@@ -213,7 +224,7 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .portfolio .portfolio-card .details button:hover {
+    .portfolio .details button:hover {
       transform: scale(1.1);
       box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
     }
@@ -249,7 +260,7 @@
 
   <section id="portfolio" class="portfolio">
     <div class="portfolio-title">Portfolio</div>
-    <div class="portfolio-card" onclick="toggleDetails(this)">
+    <div class="portfolio-card hejlovec" onclick="toggleDetails(this)">
       <h3>Hejlovec</h3>
       <img src="https://yt3.googleusercontent.com/mT84AwrYu0YGGVMvozrmqg1d9DDOJxXwm26TRaecObw-qEFff4HbRfcbOohGFJrg0xpWsVHoKg=s900-c-k-c0x00ffffff-no-rj" alt="Obrázek hejlovec">
       <div class="details">
@@ -278,17 +289,14 @@
   <script>
     function toggleDetails(card) {
       const details = card.querySelector('.details');
-      // Zavře všechny ostatní detaily
       document.querySelectorAll('.portfolio .details').forEach(detail => {
         if (detail !== details) {
           detail.style.display = 'none';
         }
       });
-      // Přepne viditelnost detailů
       details.style.display = details.style.display === 'block' ? 'none' : 'block';
     }
 
-    // Skryje detaily při kliknutí mimo karty
     document.addEventListener('click', function (event) {
       if (!event.target.closest('.portfolio-card')) {
         document.querySelectorAll('.portfolio .details').forEach(detail => {
