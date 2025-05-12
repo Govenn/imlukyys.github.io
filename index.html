@@ -160,10 +160,8 @@
 
     .portfolio .details {
       display: none;
-      position: absolute;
-      top: 120%;
-      left: 0;
-      right: 0;
+      position: relative; /* Pod projektem */
+      margin-top: 1rem;
       background: rgba(255, 255, 255, 0.1);
       padding: 1rem;
       border-radius: 15px;
@@ -201,17 +199,6 @@
 
     .portfolio .details.hidden {
       animation: fadeOut 0.3s ease forwards;
-    }
-
-    /* Mobilní zobrazení */
-    @media (max-width: 768px) {
-      .portfolio .details {
-        position: relative; /* Zajistí, že okénko bude pod projektem */
-        top: auto;
-        left: auto;
-        right: auto;
-        margin-top: 1rem;
-      }
     }
 
     .portfolio .details button {
