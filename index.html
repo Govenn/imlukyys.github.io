@@ -14,6 +14,26 @@
       overflow-x: hidden;
     }
 
+    /* Efekt sněžení */
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: white;
+      font-size: 1rem;
+      user-select: none;
+      pointer-events: none;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(100vh);
+      }
+    }
+
     /* Hlavní navigace */
     header {
       background: rgba(0, 0, 0, 0.8);
@@ -199,38 +219,6 @@
     .portfolio .portfolio-card.merkurix.active {
       outline-color: yellow;
     }
-
-    /* Skrytí tlačítek u ostatních karet */
-    .portfolio .portfolio-card .details {
-      display: none;
-      opacity: 0;
-      transform: translateY(-10px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    .portfolio .portfolio-card.active .details {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .portfolio .details button {
-      background: linear-gradient(45deg, #6a11cb, #2575fc);
-      border: none;
-      padding: 0.5rem 1rem;
-      margin: 0.5rem;
-      border-radius: 20px;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-    }
-
-    .portfolio .details button:hover {
-      transform: scale(1.1);
-      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
-    }
   </style>
 </head>
 <body>
@@ -309,6 +297,42 @@
       </div>
     </div>
   </section>
+
+  <!-- Sněžení efekt -->
+  <script>
+    const snowflakes = [];
+    const body = document.body;
+
+    function createSnowflake() {
+      const snowflake = document.createElement("div");
+      snowflake.classList.add("snowflake");
+      snowflake.textContent = "❄";
+      snowflake.style.left = Math.random() * 100 + "vw";
+      snowflake.style.animationDuration = Math.random() * 3 + 2 + "s";
+      snowflake.style.opacity = Math.random();
+      snowflake.style.fontSize = Math.random() * 10 + 10 + "px";
+      body.appendChild(snowflake);
+      snowflakes.push(snowflake);
+
+      setTimeout(() => {
+        snowflake.remove();
+        snowflakes.shift();
+      }, 5000);
+    }
+
+    setInterval(createSnowflake, 100);
+
+    body.addEventListener("mousemove", (e) => {
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+
+      snowflakes.forEach((snowflake) => {
+        const offsetX = (Math.random() - 0.5) * 10;
+        const offsetY = (Math.random() - 0.5) * 10;
+        snowflake.style.transform = `translate(${x * offsetX}px, ${y * offsetY}px)`;
+      });
+    });
+  </script>
 
   <script>
     function toggleActive(card) {
