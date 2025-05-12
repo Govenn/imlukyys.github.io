@@ -32,8 +32,7 @@
     header .logo {
       font-size: 1.8rem;
       font-weight: bold;
-      color: #ffffff;
-      letter-spacing: 1px;
+      color: white;
     }
 
     header nav {
@@ -115,8 +114,6 @@
       font-weight: bold;
       margin-bottom: 2rem;
       color: #ffffff;
-      /* Odstranění stínu a efektů */
-      text-shadow: none;
     }
 
     .portfolio .portfolio-card {
@@ -125,7 +122,7 @@
       padding: 1.5rem;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
       cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, outline-color 0.3s ease, color 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, outline-color 0.3s ease;
       text-align: center;
       position: relative;
       outline: 4px solid rgba(255, 255, 255, 0.1);
@@ -134,45 +131,6 @@
     .portfolio .portfolio-card:hover {
       transform: scale(1.05);
       box-shadow: 0 15px 30px rgba(255, 255, 255, 0.3);
-    }
-
-    /* Hejlovec */
-    .portfolio .portfolio-card.hejlovec {
-      outline-color: rgba(255, 0, 0, 0.5);
-    }
-
-    .portfolio .portfolio-card.hejlovec:hover {
-      outline-color: red;
-    }
-
-    .portfolio .portfolio-card.hejlovec h3:hover {
-      color: red;
-    }
-
-    /* IRL Hejlovec */
-    .portfolio .portfolio-card.irl-hejlovec {
-      outline-color: rgba(255, 105, 180, 0.5); /* Růžová */
-    }
-
-    .portfolio .portfolio-card.irl-hejlovec:hover {
-      outline-color: pink;
-    }
-
-    .portfolio .portfolio-card.irl-hejlovec h3:hover {
-      color: pink;
-    }
-
-    /* HEJL */
-    .portfolio .portfolio-card.hejl {
-      outline-color: rgba(0, 255, 255, 0.5); /* Cyan */
-    }
-
-    .portfolio .portfolio-card.hejl:hover {
-      outline-color: cyan;
-    }
-
-    .portfolio .portfolio-card.hejl h3:hover {
-      color: cyan;
     }
 
     .portfolio .portfolio-card img {
@@ -209,6 +167,51 @@
       background: rgba(255, 255, 255, 0.1);
       padding: 1rem;
       border-radius: 15px;
+      opacity: 0; /* Skryté na začátku */
+      animation: none; /* Animace pro přechod */
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+    }
+
+    .portfolio .details.visible {
+      display: block;
+      opacity: 1;
+      animation: fadeIn 0.3s ease forwards;
+    }
+
+    .portfolio .details.hidden {
+      animation: fadeOut 0.3s ease forwards;
+    }
+
+    /* Mobilní zobrazení */
+    @media (max-width: 768px) {
+      .portfolio .details {
+        position: relative; /* Zajistí, že okénko bude pod projektem */
+        top: auto;
+        left: auto;
+        right: auto;
+        margin-top: 1rem;
+      }
     }
 
     .portfolio .details button {
@@ -282,19 +285,23 @@
     function toggleDetails(card) {
       const details = card.querySelector('.details');
       const allDetails = document.querySelectorAll('.portfolio .details');
-      allDetails.forEach(detail => {
-        if (detail !== details) detail.style.display = 'none';
-      });
-      details.style.display = details.style.display === 'block' ? 'none' : 'block';
-    }
 
-    document.addEventListener('click', event => {
-      if (!event.target.closest('.portfolio-card')) {
-        document.querySelectorAll('.portfolio .details').forEach(detail => {
-          detail.style.display = 'none';
-        });
+      allDetails.forEach(detail => {
+        if (detail !== details) {
+          detail.classList.remove('visible');
+          detail.classList.add('hidden');
+          setTimeout(() => detail.classList.remove('hidden'), 300); // Po skrytí odstraníme třídu
+        }
+      });
+
+      if (!details.classList.contains('visible')) {
+        details.classList.add('visible');
+      } else {
+        details.classList.remove('visible');
+        details.classList.add('hidden');
+        setTimeout(() => details.classList.remove('hidden'), 300); // Po skrytí odstraníme třídu
       }
-    });
+    }
   </script>
 </body>
 </html>
