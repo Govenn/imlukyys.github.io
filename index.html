@@ -1,319 +1,99 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ImLukyys - Portfolio</title>
-  <style>
-    /* Globální styl */
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #0d0d0d;
-      color: white;
-      overflow-x: hidden;
-    }
-
-    /* Animované vesmírné pozadí */
-    #space-background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -10; /* Posun za veškerý obsah */
-      overflow: hidden;
-      background-color: #0d0d0d;
-    }
-
-    .star {
-      position: absolute;
-      background: white;
-      border-radius: 50%;
-      width: 2px;
-      height: 2px;
-      animation: twinkle 2s infinite alternate;
-    }
-
-    @keyframes twinkle {
-      from {
-        opacity: 0.5;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
-    /* Hlavní navigace */
-    header {
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(20px);
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    }
-
-    header .logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: white;
-    }
-
-    header nav {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    header nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
-      padding: 0.5rem 1rem;
-      border-radius: 10px;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-
-    header nav a:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-      transform: scale(1.1);
-    }
-
-    /* Sekce "O mně" */
-    #about {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      padding: 6rem 2rem;
-      max-width: 1200px;
-      margin: 6rem auto 0 auto;
-    }
-
-    #about .about-content {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      padding: 2rem;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-      text-align: center;
-      transition: transform 0.5s ease, box-shadow 0.5s ease, outline 0.3s ease;
-      width: 100%;
-      max-width: 500px;
-      outline: 2px solid transparent;
-    }
-
-    #about .about-content:hover {
-      transform: translateY(-10px) scale(1.05);
-      box-shadow: 0 15px 30px rgba(255, 255, 255, 0.3);
-      outline: 2px solid #6a11cb;
-    }
-
-    #about .about-content h2 {
-      color: #ffffff;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
-
-    #about .about-content p {
-      color: #cccccc;
-      font-size: 1rem;
-      line-height: 1.8;
-    }
-
-    #about .about-content img {
-      margin-top: 1rem;
-      max-width: 100%;
-      height: auto;
-      border-radius: 15px;
-      box-shadow: 0 8px 15px rgba(255, 255, 255, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    #about .about-content img:hover {
-      transform: scale(1.1);
-      box-shadow: 0 12px 25px rgba(255, 255, 255, 0.3);
-    }
-
-    /* Sekce Portfolio */
-    .portfolio {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin: 4rem auto;
-      padding: 2rem;
-      max-width: 1200px;
-    }
-
-    .portfolio .portfolio-title {
-      grid-column: 1 / -1;
-      text-align: center;
-      font-size: 3rem;
-      font-weight: bold;
-      margin-bottom: 2rem;
-      color: #ffffff;
-    }
-
-    .portfolio .portfolio-card {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      padding: 1rem;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, outline-color 0.3s ease;
-      text-align: center;
-      position: relative;
-      outline: 2px solid rgba(255, 255, 255, 0.1); /* Jemnější outline */
-    }
-
-    .portfolio .portfolio-card img {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 1rem;
-      transition: transform 0.3s ease;
-    }
-
-    .portfolio .portfolio-card:hover img {
-      transform: scale(1.1);
-    }
-
-    .portfolio .portfolio-card.active {
-      transform: scale(1.1); /* Zvětšení pouze vybrané karty */
-      outline-width: 3px; /* Zvýrazněný rámeček */
-      z-index: 10; /* Nad ostatními rámečky */
-    }
-
-    .portfolio .portfolio-card.active.hejlovec {
-      outline-color: red;
-    }
-    .portfolio .portfolio-card.active.irl-hejlovec {
-      outline-color: pink;
-    }
-    .portfolio .portfolio-card.active.hejl {
-      outline-color: cyan;
-    }
-    .portfolio .portfolio-card.active.smile {
-      outline-color: green;
-    }
-    .portfolio .portfolio-card.active.jartex {
-      outline-color: yellow;
-    }
-    .portfolio .portfolio-card.active.merkurix {
-      outline-color: orange;
-    }
-
-    .portfolio .details {
-      display: none;
-      opacity: 0;
-      transform: translateY(-10px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    .portfolio .portfolio-card.active .details {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .portfolio .details button {
-      background-color: #444;
-      color: white;
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 20px;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-
-    .portfolio .details button:hover {
-      background-color: #666;
-      transform: scale(1.1);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greg's Video Editing Portfolio</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        .header, .unique, .toolbox {
+            margin-bottom: 40px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+        }
+        .header img {
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        .header div {
+            max-width: 600px;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .header p {
+            margin: 5px 0;
+        }
+        .unique, .toolbox {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .unique h2, .toolbox h2 {
+            margin-top: 0;
+        }
+        .toolbox .tool {
+            display: inline-block;
+            width: 30%;
+            margin-right: 3%;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .toolbox .tool:last-child {
+            margin-right: 0;
+        }
+        .toolbox .tool h3 {
+            margin-top: 0;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="logo">ImLukyys - Editor</div>
-    <nav>
-      <a href="#about">O mně</a>
-      <a href="#portfolio">Portfolio</a>
-    </nav>
-  </header>
-
-  <!-- Vesmírné pozadí -->
-  <div id="space-background"></div>
-
-  <section id="about">
-    <div class="about-content">
-      <h2>O mně</h2>
-      <p>Jsem profesionální video editor, který spolupracuje s různými YouTubery.</p>
-      <img src="https://raw.githubusercontent.com/Govenn/imlukyys.github.io/refs/heads/main/lukasek.png" alt="ImLukyys">
-    </div>
-  </section>
-
-  <section id="portfolio">
-    <div class="portfolio">
-      <div class="portfolio-title">Portfolio</div>
-      <div class="portfolio-card hejlovec" onclick="toggleActive(this)">
-        <h3>Hejlovec</h3>
-        <img src="https://yt3.googleusercontent.com/mT84AwrYu0YGGVMvozrmqg1d9DDOJxXwm26TRaecObw-qEFff4HbRfcbOohGFJrg0xpWsVHoKg=s900-c-k-c0x00ffffff-no-rj" alt="Hejlovec">
-        <p>396 tis. odběratelů</p>
-        <div class="details">
-          <button>Videa</button>
-          <button>Kanál</button>
+    <div class="container">
+        <div class="header">
+            <img src="profile.jpg" alt="Greg's Profile Picture" width="100">
+            <div>
+                <h1>Čau, jsem Greg.</h1>
+                <p>Video Editor</p>
+                <p>Vášnivý tvůrce poutavých a plynulých video úprav s nadčasovým příběhem.</p>
+                <p>Čus! Jsem video editor s rokem zkušeností. Edituji v After Effects, Premiere Pro a trochu i v Blenderu. Umím efekty, přechody a další úpravy, které vylepší každé video. Edituji už rok, tak mi napiš, pokud něco potřebuješ!</p>
+            </div>
         </div>
-      </div>
-      <!-- Další rámečky -->
+        <div class="unique">
+            <h2>V čem jsem jiný?</h2>
+            <p>Do střihu videí vnáším nový pohled a spojuji vyprávění příběhu s nejmodernějšími vizuálními efekty. Nesoustředím se jen na vzhled, ale vytvářím poutavé zážitky, které zaujmou a ladí s vaší značkou, čímž zajišťuji, že váš obsah vynikne.</p>
+        </div>
+        <div class="toolbox">
+            <h2>TOOLBOX</h2>
+            <div class="tool">
+                <h3>Blender</h3>
+                <p>V programu Blender vytvářím 3D modely, animace a vizualizace s realistickým osvětlením a texturami.</p>
+                <p>Od roku 2025</p>
+            </div>
+            <div class="tool">
+                <h3>After Effects</h3>
+                <p>V aplikaci After Effects vytvářím motion design, vizuální efekty a animace pro videa a motion grafiku.</p>
+                <p>Od roku 2025</p>
+            </div>
+            <div class="tool">
+                <h3>Premiere Pro</h3>
+                <p>V programu Premiere Pro střihám, upravuji a sestavuji videa s profesionálními přechody a zvukem.</p>
+                <p>Od roku 2025</p>
+            </div>
+        </div>
     </div>
-  </section>
-
-  <script>
-    // Generování hvězd
-    const starContainer = document.getElementById('space-background');
-    const stars = [];
-    for (let i = 0; i < 100; i++) {
-      const star = document.createElement('div');
-      star.classList.add('star');
-      star.style.left = Math.random() * 100 + 'vw';
-      star.style.top = Math.random() * 100 + 'vh';
-      starContainer.appendChild(star);
-      stars.push(star);
-    }
-
-    // Pohyb hvězd s myší
-    document.body.addEventListener('mousemove', (e) => {
-      const { clientX, clientY } = e;
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight / 2;
-
-      stars.forEach(star => {
-        const moveX = (clientX - centerX) * 0.02;
-        const moveY = (clientY - centerY) * 0.02;
-        star.style.transform = `translate(${moveX}px, ${moveY}px)`;
-      });
-    });
-
-    // Aktivace rámečků
-    function toggleActive(card) {
-      document.querySelectorAll('.portfolio-card').forEach(c => c.classList.remove('active'));
-      card.classList.add('active');
-    }
-
-    // Kliknutí mimo rámeček
-    document.addEventListener('click', function (e) {
-      const activeCard = document.querySelector('.portfolio-card.active');
-      if (activeCard && !activeCard.contains(e.target)) {
-        activeCard.classList.remove('active');
-      }
-    });
-  </script>
 </body>
 </html>
