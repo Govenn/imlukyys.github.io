@@ -11,52 +11,58 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
         }
         .container {
-            width: 80%;
-            margin: auto;
+            width: 750px;
             padding: 20px;
-        }
-        .header, .unique, .toolbox {
-            margin-bottom: 40px;
         }
         .header {
             display: flex;
             align-items: center;
+            margin-bottom: 30px;
         }
         .header img {
             border-radius: 50%;
+            width: 90px;
+            height: 90px;
             margin-right: 20px;
         }
         .header div {
-            max-width: 600px;
+            flex-grow: 1;
         }
         .header h1 {
+            font-size: 22px;
             margin: 0;
         }
         .header p {
+            font-size: 14px;
             margin: 5px 0;
         }
-        .unique, .toolbox {
+        .box {
             background-color: #222;
-            padding: 20px;
+            padding: 15px;
             border-radius: 10px;
+            margin-bottom: 15px;
         }
-        .unique h2, .toolbox h2 {
+        .box h2 {
+            font-size: 20px;
             margin-top: 0;
         }
-        .toolbox .tool {
-            display: inline-block;
-            width: 30%;
-            margin-right: 3%;
+        .toolbox {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .tool {
             background-color: #333;
-            padding: 20px;
+            padding: 15px;
             border-radius: 10px;
+            flex: 1;
+            min-width: 230px;
         }
-        .toolbox .tool:last-child {
-            margin-right: 0;
-        }
-        .toolbox .tool h3 {
+        .tool h3 {
             margin-top: 0;
         }
     </style>
@@ -64,7 +70,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <img src="profile.jpg" alt="Greg's Profile Picture" width="100">
+            <img src="profile.jpg" alt="Greg's Profile Picture">
             <div>
                 <h1>Čau, jsem Greg.</h1>
                 <p>Video Editor</p>
@@ -72,28 +78,31 @@
                 <p>Čus! Jsem video editor s rokem zkušeností. Edituji v After Effects, Premiere Pro a trochu i v Blenderu. Umím efekty, přechody a další úpravy, které vylepší každé video. Edituji už rok, tak mi napiš, pokud něco potřebuješ!</p>
             </div>
         </div>
-        <div class="unique">
+        <div class="box">
             <h2>V čem jsem jiný?</h2>
             <p>Do střihu videí vnáším nový pohled a spojuji vyprávění příběhu s nejmodernějšími vizuálními efekty. Nesoustředím se jen na vzhled, ale vytvářím poutavé zážitky, které zaujmou a ladí s vaší značkou, čímž zajišťuji, že váš obsah vynikne.</p>
         </div>
-        <div class="toolbox">
+        <div class="box">
             <h2>TOOLBOX</h2>
-            <div class="tool">
-                <h3>Blender</h3>
-                <p>V programu Blender vytvářím 3D modely, animace a vizualizace s realistickým osvětlením a texturami.</p>
-                <p>Od roku 2025</p>
-            </div>
-            <div class="tool">
-                <h3>After Effects</h3>
-                <p>V aplikaci After Effects vytvářím motion design, vizuální efekty a animace pro videa a motion grafiku.</p>
-                <p>Od roku 2025</p>
-            </div>
-            <div class="tool">
-                <h3>Premiere Pro</h3>
-                <p>V programu Premiere Pro střihám, upravuji a sestavuji videa s profesionálními přechody a zvukem.</p>
-                <p>Od roku 2025</p>
+            <div class="toolbox">
+                <div class="tool">
+                    <h3>Blender</h3>
+                    <p>V programu Blender vytvářím 3D modely, animace a vizualizace s realistickým osvětlením a texturami.</p>
+                    <p>Od roku 2023</p>
+                </div>
+                <div class="tool">
+                    <h3>After Effects</h3>
+                    <p>V aplikaci After Effects vytvářím motion design, vizuální efekty a animace pro videa a motion grafiku.</p>
+                    <p>Od roku 2023</p>
+                </div>
+                <div class="tool">
+                    <h3>Premiere Pro</h3>
+                    <p>V programu Premiere Pro střihám, upravuji a sestavuji videa s profesionálními přechody a zvukem.</p>
+                    <p>Od roku 2023</p>
+                </div>
             </div>
         </div>
     </div>
 </body>
 </html>
+
