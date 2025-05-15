@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ImLukyys - Portfolio</title>
   <style>
-    /* Globální styl */
+    
     body {
       margin: 0;
       font-family: 'Arial', sans-serif;
@@ -14,14 +14,14 @@
       overflow-x: hidden;
     }
 
-    /* Animované vesmírné pozadí */
+    
     #space-background {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -10; /* Posun za veškerý obsah */
+      z-index: -10; 
       overflow: hidden;
       background-color: #0d0d0d;
     }
@@ -44,7 +44,7 @@
       }
     }
 
-    /* Hlavní navigace */
+    
     header {
       background: rgba(0, 0, 0, 0.8);
       backdrop-filter: blur(20px);
@@ -86,7 +86,7 @@
       transform: scale(1.1);
     }
 
-    /* Sekce "O mně" */
+    
     #about {
       display: flex;
       align-items: center;
@@ -141,7 +141,7 @@
       box-shadow: 0 12px 25px rgba(255, 255, 255, 0.3);
     }
 
-    /* Sekce Portfolio */
+    
     .portfolio {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -183,9 +183,9 @@
     }
 
     .portfolio .portfolio-card.active {
-      transform: scale(1.1); /* Zvětšení pouze vybrané karty */
-      outline-width: 3px; /* Zvýrazněný rámeček */
-      z-index: 10; /* Nad ostatními rámečky */
+      transform: scale(1.1); 
+      outline-width: 3px; 
+      z-index: 10; 
     }
 
     .portfolio .details {
@@ -226,7 +226,7 @@
     </nav>
   </header>
 
-  <!-- Vesmírné pozadí -->
+  
   <div id="space-background"></div>
 
   <section id="about">
@@ -257,7 +257,7 @@
   </section>
 
   <script>
-    // Generování hvězd
+    
     const starContainer = document.getElementById('space-background');
     for (let i = 0; i < 100; i++) {
       const star = document.createElement('div');
